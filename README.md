@@ -13,7 +13,7 @@ Data augmentation (like horizontal flip, rotation, and clip) was planned to be u
  
 My model is based on the architecture of EfficientNet. The architecture is relatively light compared to previous models like ResNets, VGG etc. and is computationally more efficient than others. It has been shown to have excellent performance on image classification tasks (on imagenet data) using a compound scaling approach that balances network depth, width and resolution. It takes in a 128 * 128 input of the image after rescaling it from the original dimension of 424*424 and outputs a 37 dimension vector that correspond to the probability distribution.
 
-Make sure you have glob, os, torch, pandas, numpy, PIL libraris installed before running the code.
+Make sure you have glob, os, torch, pandas, numpy, PIL libraries installed before running the code.
 
 Some remarks:
 
@@ -22,7 +22,7 @@ Some remarks:
       • Focal Loss over the first 3 class of questions since the model was expected to do well at the very least on the topmoost nodes (Class 1.1, 1.2, 1.3) to           classify the galaxies broadly into the 3 cateogories. This loss helps the model pay more attention to the examples that are difficult to learn, and take          care of any class imbalance in the data. (The 3rd class had extremely low number of datapoints)
       • The KL-Divergence was used only over the first 3 classes as well.
     
-  A weighted average of these functions was used the final loss function. The weights were dynamically alloted based on the valeus of each loss so equal            attention was paid to reduce all of them.
+  A weighted average of these functions was used the final loss function. The weights were dynamically alloted based on the values of each loss so equal            attention was paid to reduce all of them.
 
 2. I have employed Group Normalization technique inspired from the winning solution of the challenge (https://sander.ai/2014/04/05/galaxy-zoo.html), where the       probabilities of each class of questions are noramlized to sum to 1. This is obatined after applying ReLU over outputs of the network, during normalization.
 
